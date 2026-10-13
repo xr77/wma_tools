@@ -123,7 +123,7 @@ tractStruc = bsc_makeFGsFromClassification(classification, wbFG);
 
 
 % starts a parpool
-[pool, poolDir]=startUniqueParpool(8);
+% [pool, poolDir]=startUniqueParpool(8);
 
 %if you only have one fg, use it to set the slices
 if length(subSelect)==1
@@ -205,11 +205,14 @@ for iview = 1:length(fig.views)
     
     figureHand=gcf;
     figureHand.Units='inches';
-    figureHand.Position(3:4)=figureHand.Position(3:4)*4;
+    % figureHand.Position(3:4)=figureHand.Position(3:4)*4;
 
     fprintf('Saving as %s', strcat(fig.names{1},num2str(iview))) 
     
+    % XR export figure at 300 dpi
     saveas ( fh,strrep(strcat(saveDir,'/',fig.names{1},num2str(iview)),'  ', '_'),'png')
+    % fName= strrep(strcat(saveDir,'/',fig.names{1},'_view',num2str(iview)),'  ', '_');
+    % print(fh, fName, '-dpng', '-r300');
 end
 
 close all
